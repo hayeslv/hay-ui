@@ -19,6 +19,13 @@ const config = {
   themeConfig: {
     sidebar,
   },
+  markdown: {
+    config(md) {
+      // 这里可以使用markdown-it插件
+      const { demoBlockPlugin } = require("vitepress-theme-demoblock");
+      md.use(demoBlockPlugin);
+    },
+  },
 };
 
 export default config;
