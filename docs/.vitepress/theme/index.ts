@@ -1,5 +1,6 @@
 import Theme from "vitepress/dist/client/theme-default";
 import HelloWorld from "../../../src/components/HelloWorld.vue";
+import Test from "../../../src/components/Test";
 
 export default {
   ...Theme,
@@ -7,5 +8,6 @@ export default {
   enhanceApp({ app }) {
     // 注册组件
     app.component("HelloWorld", HelloWorld);
+    app.component("Test", Test);
   },
 };
