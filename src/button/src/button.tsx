@@ -1,12 +1,12 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "HayButton",
+  name: "HButton",
   setup(props, { slots }) {
     return () => {
       const defaultSlot = slots.default ? slots.default() : "按钮";
 
-      return <button>{defaultSlot}</button>;
+      return <button class={"h-btn"}>{defaultSlot}</button>;
     };
   },
 });

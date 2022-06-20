@@ -1,0 +1,35 @@
+// 变量
+$prefix: 'h';
+// 定义主题变量
+$h-border-radius: var(--h-border-radius, 2px); //一般圆角
+$h-font-size-sm: var(--h-font-size-md, 10px); //当组件size为''时使用此字号大小
+$h-font-size-md: var(--h-font-size-md, 12px); //当组件size为''时使用此字号大小
+$h-font-size-lg: var(--h-font-size-md, 14px); //当组件size为''时使用此字号大小
+$h-animation-duration-slow: var(--h-animation-duration-slow, 300ms);
+$h-animation-ease-in-out-smooth: var(
+  --h-animation-ease-in-out-smooth,
+  cubic-bezier(0.645, 0.045, 0.355, 1)
+);
+$h-light-text: var(--h-light-text, #ffffff); // 有色深色背景下字体颜色（固定）
+$h-primary: var(--h-primary, #5e7ce0); // 主要按钮，同品牌色
+$h-primary-disabled: var(--h-primary-disabled, #879ada); // 主要按钮，同品牌色
+$h-primary-hover: var(--h-primary-hover, #7693f5); // 主要按钮悬停
+$h-primary-active: var(--h-primary-active, #344899); // 主要按钮激活
+$h-text: var(--h-text, #252b3a); // 正文文本
+$h-disabled-text: var(--h-disabled-text, #8891a7); // 正文文本
+$h-disabled-bg: var(--h-disabled-bg, #c2cce5); // 正文文本
+$h-disabled-line: var(--h-disabled-line, #a9b0c0); // 正文文本
+$h-block: var(
+  --h-block,
+  #ffffff
+); // 大面积的不可折叠区块的背景色（例如顶部导航背景色）
+$h-line: var(--h-line, #adb0b8); // 边框分割线，仅用于边框
+$h-form-control-line-active: var(
+  --h-form-control-line-active,
+  #5e7ce0
+); // 表单控件边框激活色，用于获得焦点
+$h-brand-active: var(--h-brand-active, #526ecc); // 品牌色激活色（加深）
+$h-brand-active-focus: var(
+  --h-brand-active-focus,
+  #344899
+); // 品牌色焦点色（重度加深）
