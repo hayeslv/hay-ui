@@ -1,9 +1,11 @@
 <template>
-  <button class="my-button" @click="$emit('click', $event)">1111</button>
+  <h1 class="text-3xl font-bold underline">{{ msg }}</h1>
 </template>
 
 <script lang="ts" setup>
-defineEmits(["click"]);
+import { ref } from "vue";
+
+const msg = ref("hello");
 </script>
 
 <style scoped lang="scss">
