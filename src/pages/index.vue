@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import Foo from "~/components/Foo.vue";
 </script>
 
 <template>
@@ -10,7 +9,6 @@ import Foo from "~/components/Foo.vue";
     <p>
       <em>Vite Starter Template</em>
     </p>
-    <Foo />
   </div>
 </template>
 
