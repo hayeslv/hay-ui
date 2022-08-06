@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@hayeslv/eslint-config': ^0.1.6
+  '@types/node': ^18.6.4
   '@typescript-eslint/eslint-plugin': ^5.32.0
   '@typescript-eslint/parser': ^5.32.0
   '@vitejs/plugin-vue': ^3.0.0
@@ -9,7 +10,7 @@ specifiers:
   eslint: ^8.21.0
   eslint-plugin-vue: ^9.3.0
   typescript: ^4.6.4
-  vite: ^3.0.0
+  vite: 3.0.0
   vitepress: 1.0.0-alpha.4
   vitepress-theme-demoblock: ^1.4.2
   vue: ^3.2.37
@@ -20,14 +21,15 @@ dependencies:
 
 devDependencies:
   '@hayeslv/eslint-config': 0.1.6_qugx7qdu5zevzvxaiqyxfiwquq
+  '@types/node': 18.6.4
   '@typescript-eslint/eslint-plugin': 5.32.0_iosr3hrei2tubxveewluhu5lhy
   '@typescript-eslint/parser': 5.32.0_qugx7qdu5zevzvxaiqyxfiwquq
-  '@vitejs/plugin-vue': 3.0.1_vite@3.0.4+vue@3.2.37
-  '@vitejs/plugin-vue-jsx': 2.0.0_vite@3.0.4+vue@3.2.37
+  '@vitejs/plugin-vue': 3.0.1_vite@3.0.0+vue@3.2.37
+  '@vitejs/plugin-vue-jsx': 2.0.0_vite@3.0.0+vue@3.2.37
   eslint: 8.21.0
   eslint-plugin-vue: 9.3.0_eslint@8.21.0
   typescript: 4.7.4
-  vite: 3.0.4
+  vite: 3.0.0
   vitepress: 1.0.0-alpha.4
   vitepress-theme-demoblock: 1.4.2
   vue-tsc: 0.38.9_typescript@4.7.4
@@ -719,6 +721,10 @@ packages:
     resolution: {integrity: sha512-eC4U9MlIcu2q0KQmXszyn5Akca/0jrQmwDRgpAMJai7qBWq4amIQhZyNau4VYGtCeALvW1/NtjzJJ567aZxfKA==}
     dev: true
 
+  /@types/node/18.6.4:
+    resolution: {integrity: sha512-I4BD3L+6AWiUobfxZ49DlU43gtI+FTHSv9pE2Zekg6KjMpre4ByusaljW3vYSLJrvQ1ck1hUaeVu8HVlY3vzHg==}
+    dev: true
+
   /@types/web-bluetooth/0.0.14:
     resolution: {integrity: sha512-5d2RhCard1nQUC3aHcq/gHzWYO6K0WJmAbjO7mQJgCQKtZpgXxv1rOM6O/dBDhDYYVutk1sciOgNSe+5YyfM8A==}
     dev: true
@@ -849,7 +855,7 @@ packages:
       eslint-visitor-keys: 3.3.0
     dev: true
 
-  /@vitejs/plugin-vue-jsx/2.0.0_vite@3.0.4+vue@3.2.37:
+  /@vitejs/plugin-vue-jsx/2.0.0_vite@3.0.0+vue@3.2.37:
     resolution: {integrity: sha512-WF9ApZ/ivyyW3volQfu0Td0KNPhcccYEaRNzNY1NxRLVJQLSX0nFqquv3e2g7MF74p1XZK4bGtDL2y5i5O5+1A==}
     engines: {node: '>=14.18.0'}
     peerDependencies:
@@ -860,7 +866,7 @@ packages:
       '@babel/plugin-syntax-import-meta': 7.10.4_@babel+core@7.18.10
       '@babel/plugin-transform-typescript': 7.18.10_@babel+core@7.18.10
       '@vue/babel-plugin-jsx': 1.1.1_@babel+core@7.18.10
-      vite: 3.0.4
+      vite: 3.0.0
       vue: 3.2.37
     transitivePeerDependencies:
       - supports-color
@@ -886,14 +892,14 @@ packages:
       vue: 3.2.37
     dev: true
 
-  /@vitejs/plugin-vue/3.0.1_vite@3.0.4+vue@3.2.37:
+  /@vitejs/plugin-vue/3.0.1_vite@3.0.0+vue@3.2.37:
     resolution: {integrity: sha512-Ll9JgxG7ONIz/XZv3dssfoMUDu9qAnlJ+km+pBA0teYSXzwPCIzS/e1bmwNYl5dcQGs677D21amgfYAnzMl17A==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       vite: ^3.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 3.0.4
+      vite: 3.0.0
       vue: 3.2.37
     dev: true
 
@@ -3301,9 +3307,9 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vite/3.0.4:
-    resolution: {integrity: sha512-NU304nqnBeOx2MkQnskBQxVsa0pRAH5FphokTGmyy8M3oxbvw7qAXts2GORxs+h/2vKsD+osMhZ7An6yK6F1dA==}
-    engines: {node: ^14.18.0 || >=16.0.0}
+  /vite/3.0.0:
+    resolution: {integrity: sha512-M7phQhY3+fRZa0H+1WzI6N+/onruwPTBTMvaj7TzgZ0v2TE+N2sdLKxJOfOv9CckDWt5C4HmyQP81xB4dwRKzA==}
+    engines: {node: '>=14.18.0'}
     hasBin: true
     peerDependencies:
       less: '*'
