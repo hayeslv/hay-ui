@@ -11,6 +11,7 @@ specifiers:
   autoprefixer: ^10.4.8
   eslint: ^8.21.0
   eslint-plugin-vue: ^9.3.0
+  fs-extra: ^10.1.0
   happy-dom: ^6.0.4
   postcss: ^8.4.16
   sass: ^1.54.3
@@ -37,6 +38,7 @@ devDependencies:
   autoprefixer: 10.4.8_postcss@8.4.16
   eslint: 8.21.0
   eslint-plugin-vue: 9.3.0_eslint@8.21.0
+  fs-extra: 10.1.0
   happy-dom: 6.0.4
   postcss: 8.4.16
   sass: 1.54.3

@@ -6,6 +6,7 @@ import VueJsx from "@vitejs/plugin-vue-jsx";
 import { defineConfig, build } from "vite";
 import path from "path";
 import { fileURLToPath } from "url";
+import fsExtra from "fs-extra";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -37,6 +38,29 @@ const rollupOptions = {
   },
 };
 
+// 生成package.json（库中的）
+const createPackageJson = () => {
+  const fileStr = `{
+    "name": "hay-ui",
+    "version": "0.0.0",
+    "main": "hay-ui.umd.cjs",
+    "module": "hay-ui.js",
+    "author": "hayesLv",
+    "description": "组件库",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/hayeslv/hay-ui.git"
+    },
+    "keywords": ["vue3", "组件库", "tsx", "UI"],
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/hayeslv/hay-ui/issues"
+    }
+  }`;
+
+  fsExtra.outputFile(path.resolve(outputDir, "package.json"), fileStr, "utf-8");
+};
+
 // 全量构建
 const buildAll = async() => {
   await build(
@@ -54,6 +78,9 @@ const buildAll = async() => {
       },
     }),
   );
+
+  // 生成package.json
+  createPackageJson();
 };
 
 // 执行
