@@ -1,0 +1,85 @@
+
+
+// 定义主题变量
+$h-border-radius: var(--h-border-radius, 2px); // 一般圆角
+$h-font-size-md: var(--h-font-size-md, 12px); // 当组件size为''时使用此字号大小
+$h-animation-duration-slow: var(--h-animation-duration-slow, 300ms);
+$h-animation-ease-in-out-mooth: var(
+  --h-animation-ease-in-out-smooth,
+  cubic-bezier(0.645, 0.045, 0.355, 1)
+);
+$h-light-text: var(--h-light-text, #ffffff); // 有色深色背景下字体颜色（固定）
+$h-primary: var(--h-primary, #5e7ce0); // 主要按钮，同品牌色
+$h-primary-hover: var(--h-primary-hover, #7693f5); // 主要按钮悬停
+$h-primary-active: var(--h-primary-active, #344899); // 主要按钮激活
+$h-text: var(--h-text, #252b3a); // 正文文本
+$h-block: var(--h-block, #ffffff); // 大面积的不可折叠区块的背景色（例如顶部导航背景色）
+$h-line: var(--h-line, #adb0b8); // 边框分割线，仅用于边框
+$h-form-control-line-active: var(--h-form-control-line-active, #5e7ce0); // 表单控件边框激活色，用于获得焦点
+$h-brand-active: var(--h-brand-active, #526ecc); // 品牌色激活色（加深）
+$h-brand-active-focus: var(--h-brand-active-focus, #344899); // 品牌色焦点色（重度加深）
+
+.h-btn {
+  // 布局样式
+  @apply inline-flex items-center justify-center;
+
+  // 元素属性
+  @apply
+  border-[1px] border-solid border-transparent
+  h-[28px] py-0 px-[20px]
+  bg-transparent;
+  border-radius: $h-border-radius;
+
+  // 文本属性
+  @apply outline-0 leading-normal whitespace-nowrap
+  cursor-pointer;
+
+  // 文字样式
+  font-size: $h-font-size-md;
+
+  // 其他样式
+  transition: background-color $h-animation-duration-slow $h-animation-ease-in-out-mooth,
+    border-color $h-animation-duration-slow $h-animation-ease-in-out-mooth,
+    color $h-animation-duration-slow $h-animation-ease-in-out-mooth;
+
+  // 主要按钮
+  &.h-btn--primary {
+    color: $h-light-text;
+    background-color: $h-primary;
+
+    &:hover,
+    &:focus {
+      background-color: $h-primary-hover;
+    }
+
+    &:active {
+      background-color: $h-primary-active;
+    }
+  }
+
+  // 次要按钮
+  &.h-btn--secondary {
+    color: $h-text;
+    background-color: $h-block;
+    border-color: $h-line;
+
+    &:hover,
+    &:focus,
+    &:active {
+      border-color: $h-form-control-line-active;
+      color: $h-brand-active;
+    }
+  }
+
+  // 文字按钮
+  &.h-btn--text {
+    padding: 0;
+    color: $h-brand-active;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $h-brand-active-focus;
+    }
+  }
+}
