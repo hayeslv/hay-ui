@@ -7,11 +7,16 @@ export default defineComponent({
   name: "HButton",
   props: buttonProps,
   setup(props, { slots }) {
-    const { type, size, disabled } = toRefs(props);
+    const { type, size, disabled, block } = toRefs(props);
+    const blockClass = block.value ? "h-btn--block" : "";
 
     return () => {
       const defaultSlot = slots.default ?  slots.default() : "按钮";
-      return <button disabled={disabled.value} class={`h-btn h-btn--${type.value} h-btn--${size.value}`}>{defaultSlot}</button>;
+
+      return <button
+        disabled={disabled.value}
+        class={`h-btn h-btn--${type.value} h-btn--${size.value} ${blockClass}`}
+      >{defaultSlot}</button>;
     };
   },
 });

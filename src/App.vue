@@ -10,7 +10,7 @@ const confirm = () => {
 <template>
   <Test />
   <HelloWorld msg="hello-world" />
-  <HButton type="primary" size="large" disabled @click="confirm">哈哈</HButton>
+  <HButton type="primary" size="large" disabled block @click="confirm">哈哈</HButton>
 </template>
 
 <style scoped>
