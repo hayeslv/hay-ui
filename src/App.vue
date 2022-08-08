@@ -1,12 +1,16 @@
 <script setup lang="ts">
 import Test from "./components/Test";
 import HelloWorld from "./components/HelloWorld.vue";
+
+const confirm = () => {
+  console.log(123);
+};
 </script>
 
 <template>
   <Test />
   <HelloWorld msg="hello-world" />
-  <HButton type="primary" size="large">哈哈</HButton>
+  <HButton type="primary" size="large" disabled @click="confirm">哈哈</HButton>
 </template>
 
 <style scoped>

@@ -15,6 +15,12 @@ $h-light-text: var(--h-light-text, #ffffff); // 有色深色背景下字体颜�
 $h-primary: var(--h-primary, #5e7ce0); // 主要按钮，同品牌色
 $h-primary-hover: var(--h-primary-hover, #7693f5); // 主要按钮悬停
 $h-primary-active: var(--h-primary-active, #344899); // 主要按钮激活
+$h-primary-disabled: var(--h-primary-disabled, #98a8df); // 主要按钮禁用状态
+
+$h-disabled-text: var(--h-disabled-text, #757a83); // 禁用文本
+$h-disabled-bg: var(--h-disabled-bg, #c6c9cf); // 禁用背景
+$h-disabled-line: var(--h-disabled-line, #a5a8ad); // 禁用边框
+
 $h-text: var(--h-text, #252b3a); // 正文文本
 $h-block: var(--h-block, #ffffff); // 大面积的不可折叠区块的背景色（例如顶部导航背景色）
 $h-line: var(--h-line, #adb0b8); // 边框分割线，仅用于边框
