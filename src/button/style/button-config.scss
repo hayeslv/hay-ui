@@ -1,0 +1,57 @@
+@import "../../style/variable.scss";
+
+// 所有不同type的按钮自定义样式
+$type: (
+  primary: (
+    color: $h-light-text,
+    background-color: $h-primary,
+  ),
+  secondary: (
+    color: $h-text,
+    background-color: $h-block,
+    border-color: $h-line,
+  ),
+  text: (
+    padding: 0,
+    color: $h-brand-active,
+  ),
+);
+
+// 伪类的配置
+$pseudo: (
+  primary: (
+    hover: (
+      background-color: $h-primary-hover,
+    ),
+    focus: (
+      background-color: $h-primary-hover,
+    ),
+    active: (
+      background-color: $h-primary-active,
+    ),
+  ),
+  secondary: (
+    hover: (
+      border-color: $h-form-control-line-active,
+      color: $h-brand-active,
+    ),
+    focus: (
+      border-color: $h-form-control-line-active,
+    ),
+    active: (
+      border-color: $h-form-control-line-active,
+      color: $h-brand-active,
+    ),
+  ),
+  text: (
+    hover: (
+      background-color: $h-brand-active-focus,
+    ),
+    focus: (
+      background-color: $h-brand-active-focus,
+    ),
+    active: (
+      background-color: $h-brand-active-focus,
+    ),
+  )
+)

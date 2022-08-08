@@ -1,0 +1,44 @@
+@import "../../style/variable.scss";
+
+@mixin button-base {
+  // 布局样式
+  @apply inline-flex items-center justify-center;
+
+  // 元素属性
+  @apply
+  border-[1px] border-solid border-transparent
+  h-[28px] py-0 px-[20px]
+  bg-transparent;
+  border-radius: $h-border-radius;
+
+  // 文本属性
+  @apply outline-0 leading-normal whitespace-nowrap
+  cursor-pointer;
+
+  // 文字样式
+  font-size: $h-font-size-md;
+
+  // 其他样式
+  transition: background-color $h-animation-duration-slow $h-animation-ease-in-out-mooth,
+    border-color $h-animation-duration-slow $h-animation-ease-in-out-mooth,
+    color $h-animation-duration-slow $h-animation-ease-in-out-mooth;
+}
+
+// $variant：传入type
+@mixin button-variant($variant, $pseudo: false) {
+  @each $key, $value in $variant { // 第一层是多态的类型
+    &.h-btn--#{$key} {
+      @each $item-key, $item-value in $value { // 第二层是多态类型下的样式
+        @if $pseudo { // 如果是伪类就继续第三层
+          &:#{$item-key} {
+            @each $sub-item-key, $sub-item-value in $item-value { // 第三层是伪类的样式
+              #{$sub-item-key}: $sub-item-value;
+            }
+          }
+        } @else { // 不是伪类就直接设置样式
+          #{$item-key}: $item-value;
+        }
+      }
+    }
+  }
+}
