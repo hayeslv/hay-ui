@@ -14,13 +14,6 @@
   @include button-variant(button-config.$size);
 
   
-  &[disabled] {
-    cursor: not-allowed;
-  }
-  &.h-btn--block {
-    display: block;
-    width: 100%;
-  }
 
 
   // button-variant用于生成如下代码

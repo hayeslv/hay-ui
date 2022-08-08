@@ -8,10 +8,10 @@ export default defineComponent({
   props: buttonProps,
   setup(props, { slots }) {
     const { type, size, disabled, block } = toRefs(props);
-    const blockClass = block.value ? "h-btn--block" : "";
 
     return () => {
       const defaultSlot = slots.default ?  slots.default() : "按钮";
+      const blockClass = block.value ? "h-btn--block" : "";
 
       return <button
         disabled={disabled.value}
