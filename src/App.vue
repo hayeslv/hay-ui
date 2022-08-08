@@ -6,6 +6,7 @@ import HelloWorld from "./components/HelloWorld.vue";
 <template>
   <Test />
   <HelloWorld msg="hello-world" />
+  <HButton>哈哈</HButton>
 </template>
 
 <style scoped>

@@ -4,4 +4,8 @@ import App from "./App.vue";
 
 import "./index.scss";
 
-createApp(App).mount("#app");
+import Button from "./button";
+
+createApp(App)
+  .use(Button)
+  .mount("#app");
