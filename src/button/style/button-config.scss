@@ -54,4 +54,21 @@ $pseudo: (
       background-color: $h-brand-active-focus,
     ),
   )
-)
+);
+
+// 按钮尺寸
+$size: (
+  small: (
+    height: 24px,
+    padding: 0 16px,
+    font-size: $h-font-size-sm,
+  ),
+  medium: (
+    font-size: $h-font-size-md,
+  ),
+  large: (
+    height: 32px,
+    padding: 0 24px,
+    font-size: $h-font-size-lg,
+  ),
+);

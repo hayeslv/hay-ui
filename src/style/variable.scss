@@ -1,6 +1,11 @@
 // 定义主题变量
 $h-border-radius: var(--h-border-radius, 2px); // 一般圆角
-$h-font-size-md: var(--h-font-size-md, 12px); // 当组件size为''时使用此字号大小
+
+// 字体大小
+$h-font-size-sm: var(--h-font-size-md, 10px); //当组件size为'small'时使用此字号大小
+$h-font-size-md: var(--h-font-size-md, 12px); //当组件size为'medium'时使用此字号大小
+$h-font-size-lg: var(--h-font-size-md, 14px); //当组件size为'large'时使用此字号大小
+
 $h-animation-duration-slow: var(--h-animation-duration-slow, 300ms);
 $h-animation-ease-in-out-mooth: var(
   --h-animation-ease-in-out-smooth,
