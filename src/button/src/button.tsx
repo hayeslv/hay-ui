@@ -1,12 +1,13 @@
 // 真正的源码
 
 import { defineComponent, toRefs } from "vue";
+import type { ButtonProps } from "./button-type";
 import { buttonProps } from "./button-type";
 
 export default defineComponent({
   name: "HButton",
   props: buttonProps,
-  setup(props, { slots }) {
+  setup(props: ButtonProps, { slots }) {
     const { type, size, disabled, block } = toRefs(props);
 
     return () => {

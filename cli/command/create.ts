@@ -29,6 +29,7 @@ export async function onCreate(args = { type: "" }) {
     // 将选中的type赋值
     type = result.type;
   }
+  console.log("123");
   //! 错误2：用户输入了信息，但是输入错误，要求用户重新选择
   if (!CREATE_TYPES.includes(type)) {
     console.log(
