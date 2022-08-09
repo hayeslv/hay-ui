@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/fs-extra": "^9.0.13",
     "commander": "^9.4.0",
     "fs-extra": "^10.1.0",
     "inquirer": "8.2.2",

@@ -1,5 +1,6 @@
 import * as inquirer from "inquirer";
 import { red } from "kolorist";
+import createComponent from "../shared/create-component";
 
 // 创建类型：选项列表
 const CREATE_TYPES = ["component", "lib-entry"];
@@ -78,8 +79,4 @@ export async function onCreate(args = { type: "" }) {
   } catch (error) {
 
   }
-}
-
-function createComponent(info) {
-  console.log(info);
 }
