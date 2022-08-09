@@ -2,48 +2,62 @@
 
 :::demo Tree组件基本用法，传入
   ```vue
-  <template>
-    <HTree :data="data"></HTree>
+    <template>
+      <HTree :data="data"></HTree>
+    </template>
     <script setup>
-      const data = [
+      import { ref } from 'vue'
+      
+      const data = ref([
         {
-          label: "docs",
-          id: "node-1",
-          level: 1,
+          label: 'docs',
+          id: 'docs'
         },
         {
-          label: "packages",
-          id: "node-2",
+          label: 'packages',
+          id: 'packages',
           expanded: true,
-          level: 1,
+          children: [
+            {
+              label: 'plugin-vue',
+              id: 'plugin-vue'
+            },
+            {
+              label: 'vite',
+              id: 'vite',
+              expanded: true,
+              children: [
+                {
+                  label: 'src',
+                  id: 'src'
+                },
+                {
+                  label: 'README.md',
+                  id: 'README.md'
+                }
+              ]
+            }
+          ]
         },
         {
-          label: "vite",
-          id: "node-2-1",
-          parentId: "node-2",
-          expanded: true,
-          level: 2,
+          label: 'scripts',
+          id: 'scripts',
+          children: [
+            {
+              label: 'release.ts',
+              id: 'release.ts'
+            },
+            {
+              label: 'verifyCommit.ts',
+              id: 'verifyCommit.ts'
+            }
+          ]
         },
         {
-          label: "README.md",
-          id: "node-2-1-1",
-          parentId: "node-2-1",
-          isLeaf: true,
-          level: 3,
-        },
-        {
-          label: "scripts",
-          id: "node-3",
-          level: 1,
-        },
-        {
-          label: "pnpm-workspace.yaml",
-          id: "node-4",
-          level: 1,
-          isLeaf: true
+          label: 'pnpm-workspace.yaml',
+          id: 'pnpm-workspace.yaml'
         }
-      ]
+      ])
     </script>
-  </template>
   ```
 :::

@@ -1,6 +1,6 @@
 import type { ExtractPropTypes, PropType } from "vue";
 
-interface ITreeNode {
+export interface ITreeNode {
   label: string;
   id?: string;
   children?: ITreeNode[];
@@ -22,7 +22,7 @@ export interface IInnerTreeNode extends ITreeNode {
 
 export const treeProps = {
   data: {
-    type: Object as PropType<IInnerTreeNode[]>,
+    type: Object as PropType<ITreeNode[]>,
     required: true,
   },
 } as const;
