@@ -8,8 +8,8 @@ export default function genCoreTemplate(name: string) {
   const propsFileName = name + "-type";
   const className = `h-${name}`;
 
-  return `
-import { defineComponent, toRefs } from "vue";
+  return `\
+import { defineComponent } from "vue";
 import { ${propsName}, ${propsTypeName} } from "./${propsFileName}";
 
 export default defineComponent({
