@@ -20,5 +20,10 @@ export interface IInnerTreeNode extends ITreeNode {
   isLeaf?: boolean; // 是否叶子节点
 }
 
-export const treeProps = {} as const;
+export const treeProps = {
+  data: {
+    type: Object as PropType<IInnerTreeNode[]>,
+    required: true,
+  },
+} as const;
 export type TreeProps = ExtractPropTypes<typeof treeProps>;
