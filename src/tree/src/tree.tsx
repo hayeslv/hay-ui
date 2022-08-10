@@ -1,6 +1,6 @@
 import {  defineComponent, toRefs } from "vue";
 import useTree from "./hooks/useTree";
-import type { TreeProps } from "./tree-type";
+import type { IInnerTreeNode, TreeProps } from "./tree-type";
 import { treeProps } from "./tree-type";
 
 const NODE_HEIGHT = 28;
@@ -9,11 +9,24 @@ const NODE_INDENT = 24;
 export default defineComponent({
   name: "HTree",
   props: treeProps,
-  setup(props: TreeProps) {
+  setup(props: TreeProps, { slots }) {
     const { data, checkable } = toRefs(props);
     const { expandedTree, toggleNode, getChildren, toggleCheckNode } = useTree(data);
 
     return () => {
+      const defaultIconSlot = (treeNode: IInnerTreeNode) => <svg
+        onClick={() => toggleNode(treeNode)}
+        style={{
+          width: "18px",
+          height: "18px",
+          display: "inline-block",
+          transform: treeNode.expanded ? "rotate(90deg)" : "",
+        }}
+        viewBox="0 0 1024 1024"
+        xmlns="http://www.w3.org/2000/svg">
+        <path fill="currentColor" d="M384 192v640l384-320.064z"></path>
+      </svg>;
+
       return <div class="h-tree">
         {
           expandedTree.value.map(treeNode => (
@@ -39,18 +52,9 @@ export default defineComponent({
               {
                 treeNode.isLeaf
                   ? <span style={{ display: "inline-block", width: "18px" }}></span>
-                  : <svg
-                    onClick={() => toggleNode(treeNode)}
-                    style={{
-                      width: "18px",
-                      height: "18px",
-                      display: "inline-block",
-                      transform: treeNode.expanded ? "rotate(90deg)" : "",
-                    }}
-                    viewBox="0 0 1024 1024"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fill="currentColor" d="M384 192v640l384-320.064z"></path>
-                  </svg>
+                  : slots.icon // 判断插槽
+                    ? slots.icon({ nodeData: treeNode, toggleNode })
+                    : defaultIconSlot(treeNode)
               }
               {/* 复选框 */}
               {
@@ -58,7 +62,11 @@ export default defineComponent({
                 <input type="checkbox" v-model={treeNode.checked} onClick={() => toggleCheckNode(treeNode)}></input>
               }
               {/* 标签 */}
-              {treeNode.label}
+              {
+                slots.content
+                  ? slots.content(treeNode)
+                  : treeNode.label
+              }
             </div>
           ))
         }
