@@ -7,6 +7,8 @@ import DemoBlock from "vitepress-theme-demoblock/components/DemoBlock.vue";
 import Demo from "vitepress-theme-demoblock/components/Demo.vue";
 import type { App } from "vue";
 
+import "../../../src/index.scss";
+
 import { Tree } from "../../../src/tree";
 
 export default {

@@ -37,7 +37,9 @@ export default defineConfig({
     config(md) {
       // 这里可以使用markdown-it插件
 
-      md.use(demoBlockPlugin);
+      md.use(demoBlockPlugin, {
+        cssPreprocessor: "scss",
+      });
     },
   },
 });
