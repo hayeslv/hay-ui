@@ -7,9 +7,11 @@ import { defineConfig, build } from "vite";
 import path from "path";
 import { fileURLToPath } from "url";
 import fsExtra from "fs-extra";
+import pkg from "../package.json";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const version = pkg.version;
 
 // 基础配置
 const baseConfig = defineConfig({
@@ -44,7 +46,7 @@ const rollupOptions = {
 const createPackageJson = (name) => {
   const fileStr = `{
     "name": "${name || "hay-ui"}",
-    "version": "1.0.0",
+    "version": "${version}",
     "main": "${name ? "index.umd.cjs" : "hay-ui.umd.cjs"}",
     "module": "${name ? "index.js" : "hay-ui.js"}",
     "author": "hayesLv",
@@ -62,10 +64,18 @@ const createPackageJson = (name) => {
 
   if (name) {
     // 单个组件，输出对应的package.json
-    fsExtra.outputFile(path.resolve(outputDir, `${name}/package.json`), fileStr, "utf-8");
+    fsExtra.outputFile(
+      path.resolve(outputDir, `${name}/package.json`),
+      fileStr,
+      "utf-8",
+    );
   } else {
     // 全量
-    fsExtra.outputFile(path.resolve(outputDir, "package.json"), fileStr, "utf-8");
+    fsExtra.outputFile(
+      path.resolve(outputDir, "package.json"),
+      fileStr,
+      "utf-8",
+    );
   }
 };
 

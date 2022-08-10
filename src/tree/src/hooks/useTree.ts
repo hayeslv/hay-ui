@@ -5,7 +5,6 @@ import { generateInnerTree } from "../utils";
 
 export default function useTree(node: Ref<ITreeNode[]> | ITreeNode[]) {
   const innerData = ref(generateInnerTree(unref(node)));
-  console.log(innerData.value);
 
   const toggleNode = (node: IInnerTreeNode) => {
     node.expanded = !node.expanded;
@@ -64,18 +63,25 @@ export default function useTree(node: Ref<ITreeNode[]> | ITreeNode[]) {
     });
 
     // 2.子->父：根据父节点获取兄弟节点，判断是否全部是选中状态
-    // 获取父节点
-    const partentNode = getParent(node);
-    if (!partentNode) return;
-    // 获取兄弟节点：相当于获取parentNode的直接子节点
-    const siblingNodes = getChildren(partentNode, false);
-    // 过滤出所有选中的兄弟节点
-    const checkedSiblingNodes = siblingNodes.filter(item => item.checked);
-    if (siblingNodes.length === checkedSiblingNodes.length) {
+    setParentCheck(node);
+
+    function setParentCheck(node: IInnerTreeNode) {
+      // 获取父节点
+      const partentNode = getParent(node);
+      if (!partentNode) return; // 如果没有父节点，则没必要处理子到父的联动
+      // 获取兄弟节点：相当于获取parentNode的直接子节点
+      const siblingNodes = getChildren(partentNode, false);
+      // 过滤出所有选中的兄弟节点
+      const checkedSiblingNodes = siblingNodes.filter(item => item.checked);
+      if (siblingNodes.length === checkedSiblingNodes.length) {
       // 所有兄弟节点均被选中了，此时父节点应该被选中
-      partentNode.checked = true;
-    } else {
-      partentNode.checked = false;
+        partentNode.checked = true;
+      } else {
+        partentNode.checked = false;
+      }
+
+      // 如果父节点还有父节点：node.parent.parent，则需要判断 node.parent这一层的兄弟节点是否也都全选了，如果全选的话 node.parent.parent 也需要被选中
+      if (partentNode.parentId) setParentCheck(partentNode);
     }
   };
 
