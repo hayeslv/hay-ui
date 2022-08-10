@@ -7,6 +7,7 @@ export interface ITreeNode {
 
   selected?: boolean; // 点击选中
   checked?: boolean; // 勾选
+  partChecked?: boolean; // 部分选中
   expanded?: boolean; // 展开
 
   disableSelect?: boolean;

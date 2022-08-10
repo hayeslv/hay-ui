@@ -2,6 +2,7 @@ import {  defineComponent, toRefs } from "vue";
 import useTree from "./hooks/useTree";
 import type { IInnerTreeNode, TreeProps } from "./tree-type";
 import { treeProps } from "./tree-type";
+import "../style/tree.scss";
 
 const NODE_HEIGHT = 28;
 const NODE_INDENT = 24;
@@ -31,7 +32,7 @@ export default defineComponent({
         {
           expandedTree.value.map(treeNode => (
             <div
-              class="h-tree-node relative leading-8 hover:bg-slate-100"
+              class="h-tree-node relative leading-[24px] hover:bg-slate-100"
               style={{
                 paddingLeft: `${NODE_INDENT * (treeNode.level - 1)}px`,
               }}>
@@ -59,7 +60,14 @@ export default defineComponent({
               {/* 复选框 */}
               {
                 checkable.value &&
-                <input type="checkbox" v-model={treeNode.checked} onClick={() => toggleCheckNode(treeNode)}></input>
+                <span class={`relative mr-[8px] ${treeNode.partChecked ? "h-tree__part_checked" : ""}`}>
+                  {
+                    treeNode.partChecked
+                      ? <span class="h-tree-checkbox__inner cursor-pointer" onClick={() => toggleCheckNode(treeNode)}>-</span>
+                      // TODO 将input修改为span
+                      : <input type="checkbox" v-model={treeNode.checked} onClick={() => toggleCheckNode(treeNode)}></input>
+                  }
+                </span>
               }
               {/* 标签 */}
               {

@@ -1,4 +1,28 @@
 .h-tree {
   /* your component style */
-  
-}  
+  &-node{
+    display: flex;
+    align-items: center;
+    text-align: left;
+  }
+  &-checkbox__inner{
+    // position: absolute;
+    // left: 0;
+    // top: 8px;
+    width: 14px;
+    height: 14px;
+    background-color: #0075ff;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px;
+  }
+  input[type=checkbox] {
+    width: 14px;
+    height: 14px;
+    &::after {
+      background-color: red;
+    }
+  }
+}

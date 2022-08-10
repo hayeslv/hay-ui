@@ -56,6 +56,7 @@ export default function useTree(node: Ref<ITreeNode[]> | ITreeNode[]) {
   const toggleCheckNode = (node: IInnerTreeNode) => {
     // 避免初始化的时候，node中没有checked设置
     node.checked = !node.checked;
+    node.partChecked = false; // 重置部分选中状态
 
     // 1.父->子：获取子节点，并同步他们的选中状态和父节点一致
     getChildren(node).forEach(child => {
@@ -71,13 +72,17 @@ export default function useTree(node: Ref<ITreeNode[]> | ITreeNode[]) {
       if (!partentNode) return; // 如果没有父节点，则没必要处理子到父的联动
       // 获取兄弟节点：相当于获取parentNode的直接子节点
       const siblingNodes = getChildren(partentNode, false);
-      // 过滤出所有选中的兄弟节点
-      const checkedSiblingNodes = siblingNodes.filter(item => item.checked);
-      if (siblingNodes.length === checkedSiblingNodes.length) {
-      // 所有兄弟节点均被选中了，此时父节点应该被选中
-        partentNode.checked = true;
+      // ==兄弟节点是否全部选中状态==
+      const siblingCheckStatus = siblingNodes.every(item => item.checked);
+      partentNode.checked = siblingCheckStatus;
+      // ==兄弟节点是否部分选中==
+      const siblingPartCheckStatus = siblingNodes.some(item => item.checked || item.partChecked);
+
+      if (!siblingCheckStatus && siblingPartCheckStatus) {
+        // 不是全选中，也不是一个都没选中
+        partentNode.partChecked = true;
       } else {
-        partentNode.checked = false;
+        partentNode.partChecked = false;
       }
 
       // 如果父节点还有父节点：node.parent.parent，则需要判断 node.parent这一层的兄弟节点是否也都全选了，如果全选的话 node.parent.parent 也需要被选中

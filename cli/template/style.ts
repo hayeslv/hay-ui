@@ -3,6 +3,6 @@ export function genStyleTemplate(name: string) {
 .h-${name} {
   /* your component style */
   
-}  
+}
 `;
 }
