@@ -1,5 +1,5 @@
 import {  defineComponent, toRefs } from "vue";
-import { useTree } from "./composables/use-tree";
+import useTree from "./hooks/useTree";
 import type { TreeProps } from "./tree-type";
 import { treeProps } from "./tree-type";
 
@@ -10,8 +10,8 @@ export default defineComponent({
   name: "HTree",
   props: treeProps,
   setup(props: TreeProps) {
-    const { data } = toRefs(props);
-    const { expandedTree, toggleNode, getChildren } = useTree(data);
+    const { data, checkable } = toRefs(props);
+    const { expandedTree, toggleNode, getChildren, toggleCheckNode } = useTree(data);
 
     return () => {
       return <div class="h-tree">
@@ -51,6 +51,11 @@ export default defineComponent({
                     xmlns="http://www.w3.org/2000/svg">
                     <path fill="currentColor" d="M384 192v640l384-320.064z"></path>
                   </svg>
+              }
+              {/* 复选框 */}
+              {
+                checkable.value &&
+                <input type="checkbox" v-model={treeNode.checked} onClick={() => toggleCheckNode(treeNode)}></input>
               }
               {/* 标签 */}
               {treeNode.label}

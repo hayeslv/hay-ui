@@ -25,6 +25,9 @@ export const treeProps = {
     type: Object as PropType<ITreeNode[]>,
     required: true,
   },
-  expanded: Boolean,
+  checkable: {
+    type: Boolean,
+    default: false,
+  },
 } as const;
 export type TreeProps = ExtractPropTypes<typeof treeProps>;

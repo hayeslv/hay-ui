@@ -8,17 +8,17 @@ export function generateInnerTree(
 ): IInnerTreeNode[] {
   level++; // 当前函数每次被调用，level都自增一次
   return tree.reduce((prev, cur) => {
+    if (path.length > 0 && path[path.length - 1].level >= level) {
+      // 如果path的最后一位的level，比当前node的level大，说明是“由子到父”的过程了（冒泡），此时应该弹出
+      let count = path[path.length - 1].level - level;
+      do { path.pop(); } while (count--);
+    }
+
     const o = { ...cur } as IInnerTreeNode;
     o.level = level; // 设置当前节点所处层级
 
     // 记录调用栈，用于计算parentId
-    if (path.length > 0 && path[path.length - 1].level >= level) {
-      // 如果path的最后一位的level，比当前node的level大，说明是“由子到父”的过程了（冒泡），此时应该弹出
-      path.pop();
-    } else {
-      // 记录 父 -> 子
-      path.push(o);
-    }
+    path.push(o);
 
     // 获取parentNode
     const parentNode = path[path.length - 2];
