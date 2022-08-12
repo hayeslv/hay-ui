@@ -2,7 +2,6 @@
   "name": "hay-ui",
   "private": true,
   "version": "1.0.1",
-  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",

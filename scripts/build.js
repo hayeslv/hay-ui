@@ -1,16 +1,13 @@
 // 这里是js，因为将来是使用node去执行的
 
 // 引入vite导出的build方法，用它来创建
-import Vue from "@vitejs/plugin-vue";
-import VueJsx from "@vitejs/plugin-vue-jsx";
-import { defineConfig, build } from "vite";
-import path from "path";
-import { fileURLToPath } from "url";
-import fsExtra from "fs-extra";
-import pkg from "../package.json";
+const Vue = require("@vitejs/plugin-vue");
+const VueJsx = require("@vitejs/plugin-vue-jsx");
+const { defineConfig, build } = require("vite");
+const path = require("path");
+const fsExtra = require("fs-extra");
+const pkg = require("../package.json");
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 const version = pkg.version;
 
 // 基础配置
