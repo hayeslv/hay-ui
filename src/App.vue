@@ -2,6 +2,7 @@
 import Test from "./components/Test";
 import HelloWorld from "./components/HelloWorld.vue";
 import { ref } from "vue";
+// import { HButton, HTree } from "../build/hay-ui.esm.js";
 
 const confirm = () => {
   console.log(123);

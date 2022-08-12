@@ -108,7 +108,7 @@ const buildAll = async() => {
           entry: entryFile,
           name: "hay-ui",
           fileName: "hay-ui",
-          formats: ["es", "umd"],
+          formats: ["esm", "umd"],
         },
         outDir: outputDir,
       },

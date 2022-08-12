@@ -3,7 +3,7 @@ import type { App } from "vue";
 import Button from "./src/button";
 
 // 具名导出
-export { Button };
+export { Button as HButton };
 
 // 导出插件
 export default {

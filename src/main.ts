@@ -7,7 +7,7 @@ import "./index.scss";
 // import Button from "./button";
 
 // 使用全量导出
-import HayUI from "../build/hay-ui.js";
+import HayUI from "../build/hay-ui.esm.js";
 
 createApp(App)
   .use(HayUI)

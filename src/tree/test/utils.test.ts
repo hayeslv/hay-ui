@@ -1,4 +1,4 @@
-import type { ITreeNode } from "../src/tree-type";
+import type { ITreeNode } from "../src/tree.type";
 import { generateInnerTree } from "../src/utils";
 
 // 数据

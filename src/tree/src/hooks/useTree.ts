@@ -1,12 +1,13 @@
-import type { Ref } from "vue";
+import type { Ref, SetupContext } from "vue";
 import { computed, ref, unref } from "vue";
-import type { IInnerTreeNode, ITreeNode } from "../tree-type";
+import type { IInnerTreeNode, ITreeNode } from "../tree.type";
 import { generateInnerTree } from "../utils";
 
-export default function useTree(node: Ref<ITreeNode[]> | ITreeNode[]) {
+export default function useTree(node: Ref<ITreeNode[]> | ITreeNode[], ctx: SetupContext) {
   const innerData = ref(generateInnerTree(unref(node)));
 
   const toggleNode = (node: IInnerTreeNode) => {
+    console.log(123);
     node.expanded = !node.expanded;
   };
   // 获取那些展开的节点列表
@@ -16,13 +17,13 @@ export default function useTree(node: Ref<ITreeNode[]> | ITreeNode[]) {
 
     // 循环列表，找出那些 !expanded 的节点
     for (const item of innerData.value) {
-    // 如果当前遍历的节点在排除列表中，则直接跳出本次循环
-      if (excludedNodes.includes(item)) continue;
+      // 如果当前遍历的节点在排除列表中，则直接跳出本次循环
+      if (excludedNodes.map(node => node.id).includes(item.id)) continue;
 
       // 当前节点处于折叠状态，它的子节点应该被排除
       if (item.expanded !== true) {
       // 获取需要排除的children
-        excludedNodes = getChildren(item);
+        excludedNodes = getChildrenExpanded(item);
       }
       result.push(item);
     }
@@ -34,7 +35,7 @@ export default function useTree(node: Ref<ITreeNode[]> | ITreeNode[]) {
    * @param {boolean} recursive 是否递归
    * @returns
    */
-  const getChildren = (node: IInnerTreeNode, recursive = true) => {
+  const getChildrenExpanded = (node: IInnerTreeNode, recursive: boolean = true) => {
     const result = [];
     // 找到node在列表中的索引
     const startIndex = innerData.value.findIndex(item => item.id === node.id);
@@ -59,7 +60,7 @@ export default function useTree(node: Ref<ITreeNode[]> | ITreeNode[]) {
     node.partChecked = false; // 重置部分选中状态
 
     // 1.父->子：获取子节点，并同步他们的选中状态和父节点一致
-    getChildren(node).forEach(child => {
+    getChildrenExpanded(node).forEach(child => {
       child.checked = node.checked;
     });
 
@@ -71,7 +72,7 @@ export default function useTree(node: Ref<ITreeNode[]> | ITreeNode[]) {
       const partentNode = getParent(node);
       if (!partentNode) return; // 如果没有父节点，则没必要处理子到父的联动
       // 获取兄弟节点：相当于获取parentNode的直接子节点
-      const siblingNodes = getChildren(partentNode, false);
+      const siblingNodes = getChildrenExpanded(partentNode, false);
       // ==兄弟节点是否全部选中状态==
       const siblingCheckStatus = siblingNodes.every(item => item.checked);
       partentNode.checked = siblingCheckStatus;
@@ -91,10 +92,10 @@ export default function useTree(node: Ref<ITreeNode[]> | ITreeNode[]) {
   };
 
   return {
-    innerData,
+    treeData: innerData,
     expandedTree,
     toggleNode,
-    getChildren,
+    getChildrenExpanded,
     toggleCheckNode,
   };
 }

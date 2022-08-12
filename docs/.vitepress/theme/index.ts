@@ -9,7 +9,7 @@ import type { App } from "vue";
 
 import "../../../src/index.scss";
 
-import { Tree } from "../../../src/tree";
+import { HTree } from "../../../src/tree";
 
 export default {
   ...Theme,
@@ -22,6 +22,6 @@ export default {
     app.component("HelloWorld", HelloWorld);
     app.component("Test", Test);
 
-    app.component("HTree", Tree);
+    app.component("HTree", HTree);
   },
 };

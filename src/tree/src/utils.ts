@@ -1,4 +1,4 @@
-import type { IInnerTreeNode, ITreeNode } from "./tree-type";
+import type { IInnerTreeNode, ITreeNode } from "./tree.type";
 
 // 树拍平
 export function generateInnerTree(
