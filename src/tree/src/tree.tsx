@@ -13,7 +13,7 @@ export default defineComponent({
   setup(props: TreeProps, ctx: SetupContext) {
     const { data } = toRefs(props);
     const { slots } = ctx;
-    const treeContext = useTree(data.value, ctx);
+    const treeContext = useTree(data.value);
     provide("TREE_CONTEXT", treeContext);
 
     return () => {
@@ -27,7 +27,7 @@ export default defineComponent({
                   ? slots.icon({ nodeData: treeNode, toggleNode: treeContext.toggleNode })
                   : <TreeNodeToggle
                     expanded={!!treeNode.expanded}
-                    {...{ onClick: () => treeContext.toggleNode(treeNode) }}
+                    onClick= {() => treeContext.toggleNode(treeNode)}
                   ></TreeNodeToggle>,
               }}
             </TreeNode>

@@ -10,7 +10,7 @@ export default defineComponent({
   props: treeNodeProps,
   setup(props: TreeNodeProps, { slots }) {
     const { treeNode, checkable } = toRefs(props);
-    const { getChildrenExpanded, toggleCheckNode } = inject("TREE_CONTEXT") as any; // TODO 添加类型
+    const { getChildren, toggleCheckNode } = inject("TREE_CONTEXT") as any; // TODO 添加类型
 
     return () => <div
       class="h-tree-node relative leading-[24px] hover:bg-slate-100"
@@ -23,7 +23,7 @@ export default defineComponent({
       <span
         class="h-tree-node__vline absolute w-px bg-gray-300"
         style={{
-          height: `${NODE_HEIGHT * getChildrenExpanded(treeNode).length}px`,
+          height: `${NODE_HEIGHT * getChildren(treeNode).length}px`,
           left: `${NODE_INDENT * (treeNode.value.level - 1) + 9}px`,
           top: `${NODE_HEIGHT}px`,
         }}

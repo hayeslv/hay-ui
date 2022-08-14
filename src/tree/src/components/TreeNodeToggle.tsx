@@ -1,6 +1,12 @@
 import type { SetupContext } from "vue";
 
-export default (props: { expanded: boolean }, { emit }: SetupContext) => (
+export default (
+  props: {
+    expanded: boolean;
+    onClick?: () => void;
+  },
+  { emit }: SetupContext,
+) => (
   <svg
     style={{
       width: "18px",
