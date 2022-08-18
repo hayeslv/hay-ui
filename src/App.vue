@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import Test from "./components/Test";
-import HelloWorld from "./components/HelloWorld.vue";
 import { ref } from "vue";
 // import { HButton, HTree } from "../build/hay-ui.esm.js";
 
@@ -61,8 +59,6 @@ const data = ref([
 </script>
 
 <template>
-  <Test />
-  <HelloWorld msg="hello-world" />
   <HButton type="primary" size="large" @click="confirm">哈哈</HButton>
   <HTree :data="data" />
 </template>

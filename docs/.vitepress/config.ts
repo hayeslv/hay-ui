@@ -12,7 +12,9 @@ const sidebar = {
     { text: "反馈", items: [] },
     {
       text: "数据录入",
-      items: [{ text: "Input 输入框", link: "/components/input/" }],
+      items: [
+        // { text: "Input 输入框", link: "/components/input/" }
+      ],
     },
     {
       text: "数据展示",
@@ -23,7 +25,7 @@ const sidebar = {
     {
       text: "布局",
       items: [
-        { text: "Space 间距", link: "/components/space/" },
+        // { text: "Space 间距", link: "/components/space/" },
       ],
     },
   ],

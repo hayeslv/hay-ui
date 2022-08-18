@@ -1,6 +1,4 @@
 import Theme from "vitepress/theme";
-import HelloWorld from "../../../src/components/HelloWorld.vue";
-import Test from "../../../src/components/Test";
 
 import "./demo-block.scss";
 import DemoBlock from "vitepress-theme-demoblock/components/DemoBlock.vue";
@@ -9,7 +7,7 @@ import type { App } from "vue";
 
 import "../../../src/index.scss";
 
-import { HTree } from "../../../src/tree";
+import { HTree } from "../../../src/components/tree";
 
 export default {
   ...Theme,
@@ -18,9 +16,6 @@ export default {
     // 注册组件
     app.component("DemoBlock", DemoBlock);
     app.component("Demo", Demo);
-
-    app.component("HelloWorld", HelloWorld);
-    app.component("Test", Test);
 
     app.component("HTree", HTree);
   },

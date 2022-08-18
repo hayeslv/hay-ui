@@ -23,7 +23,7 @@ const baseConfig = defineConfig({
 // 入口文件
 const entryFile = path.resolve(__dirname, "./entry.ts");
 // 组件目录
-const componentsDir = path.resolve(__dirname, "../src");
+const componentsDir = path.resolve(__dirname, "../src/components");
 // 输出目录
 const outputDir = path.resolve(__dirname, "../build");
 

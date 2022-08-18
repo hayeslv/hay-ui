@@ -1,9 +1,9 @@
 # Button
 
-:::demo 这是HelloWorld组件，我们可以传入msg属性给它
+:::demo Button组件
 ```vue
 <template>
-  <HelloWorld></HelloWorld>
+  <button>test</button>
 </template>
 ```
 :::
