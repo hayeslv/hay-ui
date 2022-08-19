@@ -1,3 +1,4 @@
+import type { SetupContext } from "vue";
 import { defineComponent, inject, toRefs } from "vue";
 import type { FormItemProps } from "./form-item-type";
 import { formItemProps } from "./form-item-type";
@@ -21,15 +22,20 @@ const getColWidth = (field: FormItemProps) => {
 export default defineComponent({
   name: "HFormItem",
   props: formItemProps,
-  setup(props: FormItemProps) {
+  slots: ["default"],
+  setup(props: FormItemProps, ctx: SetupContext) {
     const formModel = inject("FORM_MODEL") as Record<string, any>;
     const { label, prop } = toRefs(props);
 
     return () => {
       return <div class="h-form-item h-form-item__read" style={{ width: getColWidth(props) }}>
-        <div class="h-form-item__read-label">{label.value}</div>
+        <div class="h-form-item__read-label">{label.value || ""}</div>
         <div class="h-form-item__read-content">
-          {formModel.value[prop.value] || ""}
+          {
+            ctx.slots.default
+              ? ctx.slots.default({ ...formModel.value })
+              : formModel.value[prop.value] || ""
+          }
         </div>
       </div>;
     };
