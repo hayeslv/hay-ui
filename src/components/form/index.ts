@@ -2,7 +2,7 @@ import type { App } from "vue";
 import Form from "./src/form";
 
 // 具名导出
-export { Form };
+export { Form as HForm };
 
 // 导出插件
 export default {

@@ -7,7 +7,7 @@ import type { App } from "vue";
 import ${compName} from "./src/${name}";
 
 // 具名导出
-export { ${compName} };
+export { ${compName} as H${compName} };
 
 // 导出插件
 export default {

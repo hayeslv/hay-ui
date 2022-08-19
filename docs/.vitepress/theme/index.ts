@@ -8,6 +8,8 @@ import type { App } from "vue";
 import "../../../src/index.scss";
 
 import { HTree } from "../../../src/components/tree";
+import { HForm } from "../../../src/components/form";
+import { HFormItem } from "../../../src/components/form-item";
 
 export default {
   ...Theme,
@@ -18,5 +20,7 @@ export default {
     app.component("Demo", Demo);
 
     app.component("HTree", HTree);
+    app.component("HForm", HForm);
+    app.component("HFormItem", HFormItem);
   },
 };

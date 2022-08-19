@@ -1,0 +1,22 @@
+.h-form-item {
+  display: flex;
+  height: 40px;
+  line-height: 40px;
+  font-size: 14px;
+  &__read-label{
+    text-align: right;
+    width: 100px;
+    background-color: #F7F7F7;
+    box-sizing: border-box;
+    padding: 0px 12px;
+    border-right: 1px solid #E6E6E6;
+    border-bottom: 1px solid #E6E6E6;
+  }
+  &__read-content{
+    flex: 1;
+    box-sizing: border-box;
+    padding: 0px 12px;
+    border-right: 1px solid #E6E6E6;
+    border-bottom: 1px solid #E6E6E6;
+  }
+}
