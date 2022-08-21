@@ -12,6 +12,7 @@ import "../../../src/index.scss";
 import { HTree } from "../../../src/components/tree";
 import { HForm } from "../../../src/components/form";
 import { HFormItem } from "../../../src/components/form-item";
+import { HInput } from "../../../src/components/input";
 
 export default {
   ...Theme,
@@ -25,5 +26,6 @@ export default {
     app.component("HTree", HTree);
     app.component("HForm", HForm);
     app.component("HFormItem", HFormItem);
+    app.component("HInput", HInput);
   },
 };

@@ -49,7 +49,9 @@
     "ignorePatterns": [
       "build/*"
     ],
-    "rules": {}
+    "rules": {
+      "node/no-callback-literal": "off"
+    }
   },
   "lint-staged": {
     "*.{js,ts,tsx,vue}": "eslint --cache --fix"
