@@ -1,8 +1,10 @@
 import type { Ref, SetupContext } from "vue";
-import { defineComponent, inject, toRefs } from "vue";
+import { computed, defineComponent, inject, toRefs } from "vue";
 import type { FormItemProps } from "./form-item-type";
 import { formItemProps } from "./form-item-type";
 import "../style/form-item.scss";
+import type { FormItemRule } from "../../../tokens";
+import { ensureArray } from "../../../utils";
 
 const fullColPart = 24;
 const defaultColPart = 12;
@@ -24,27 +26,48 @@ export default defineComponent({
   props: formItemProps,
   slots: ["default"],
   setup(props: FormItemProps, ctx: SetupContext) {
-    const formModel = inject("FORM_MODEL") as Ref<Record<string, any>>;
-    const formType = inject("FORM_TYPE") as Ref<"view" | "edit">;
+    const formContext: any = inject("FromContext", {});
     const { label, prop } = toRefs(props);
 
+    const _rules = computed(() => {
+      const rules: FormItemRule[] = props.rules ? ensureArray(props.rules) : [];
+      // 将form表单中的rules合进来
+      const formRules = formContext?.rules;
+      if (formRules && props.prop) {
+        const _rules = formRules[props.prop];
+        if (_rules) {
+          rules.push(...ensureArray(_rules));
+        }
+      }
+      return rules;
+    });
+    const isRequired = computed(() =>
+      _rules.value.some(rule => rule.required === true),
+    );
+
+    const formItemClasses = computed(() => [
+      "h-form-item",
+      `h-form-item__${formContext.type}`,
+      isRequired.value && "required",
+    ]);
+
     return () => {
-      const viewDefaultContent = () => formModel.value[prop.value] || "";
-      const editDefaultContent = (form: Ref<Record<string, any>>, prop: Ref<string>) => (
-        <el-input v-model={form.value[prop.value]} />
+      const viewDefaultContent = () => formContext.model[prop.value] || "";
+      const editDefaultContent = (form: Record<string, any>, prop: Ref<string>) => (
+        <el-input v-model={form[prop.value]} />
       );
-      const contentRender = (form: Ref<Record<string, any>>, prop: Ref<string>) => {
-        if (formType.value === "view") return viewDefaultContent();
+      const contentRender = (form: Record<string, any>, prop: Ref<string>) => {
+        if (formContext.type === "view") return viewDefaultContent();
         return editDefaultContent(form, prop);
       };
 
-      return <div class={["h-form-item", `h-form-item__${formType.value}`]} style={{ width: getColWidth(props) }}>
-        <div class={[`h-form-item__${formType.value}-label`]}>{label.value || ""}</div>
-        <div class={[`h-form-item__${formType.value}-content`]}>
+      return <div class={formItemClasses.value} style={{ width: getColWidth(props) }}>
+        <div class={["h-form-item__label"]}>{label.value || ""}</div>
+        <div class={["h-form-item__content"]}>
           {
             ctx.slots.default
-              ? ctx.slots.default({ ...formModel.value })
-              : contentRender(formModel, prop)
+              ? ctx.slots.default({ ...formContext.model })
+              : contentRender(formContext.model, prop)
           }
         </div>
       </div>;

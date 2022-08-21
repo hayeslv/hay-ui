@@ -83,7 +83,7 @@ export default defineComponent({
 
 ## Form表单（编辑模式）
 
-:::demo type="edit"，form-item 的内容默认是 input
+:::demo type="edit"，form-item 的内容默认是 input，也可以使用插槽
 
 ```vue
 <template>
@@ -120,6 +120,47 @@ export default defineComponent({
     }, 1000);
 
     return { formModel }
+  },
+});
+</script>
+```
+
+:::
+
+## 表单验证
+
+:::demo Form组件提供了表单验证的功能，只需要通过 `rules` 属性传入约定的验证规则，并将 Form-Item 的 `prop` 属性设置为需要校验的字段名即可
+
+```vue
+<template>
+  <HForm :model="formModel" :rules="rules" type="edit">
+    <HFormItem label="姓名" prop="name"></HFormItem>
+    <HFormItem label="性别" prop="sex"></HFormItem>
+    <HFormItem label="地址" prop="address" full></HFormItem>
+    <HFormItem label="年龄" prop="age"></HFormItem>
+    <HFormItem label="联系电话" prop="phone"></HFormItem>
+  </HForm>
+</template>
+<script>
+import { defineComponent, ref, reactive } from 'vue';
+export default defineComponent({
+  setup() {
+    const formModel = ref({
+      name: "",
+      sex: "",
+      age: "",
+      phone: "",
+      address: ""
+    })
+
+    const rules = reactive({
+      name: [
+        { required: true, message: "请输入姓名", trigger: "blur" },
+        { min: 3, max: 5, message: "长度应该在3~5之间", trigger: "blur" }
+      ]
+    })
+
+    return { formModel, rules }
   },
 });
 </script>

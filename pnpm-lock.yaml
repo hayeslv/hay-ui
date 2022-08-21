@@ -8,6 +8,7 @@ specifiers:
   '@typescript-eslint/parser': ^5.32.0
   '@vitejs/plugin-vue': ^3.0.0
   '@vitejs/plugin-vue-jsx': ^2.0.0
+  async-validator: ^4.2.5
   autoprefixer: ^10.4.8
   element-plus: ^2.2.14
   eslint: ^8.21.0
@@ -26,6 +27,7 @@ specifiers:
   vue-tsc: ^0.38.4
 
 dependencies:
+  async-validator: 4.2.5
   element-plus: 2.2.14_vue@3.2.37
   vue: 3.2.37
 
