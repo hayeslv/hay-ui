@@ -1,4 +1,4 @@
-import type { SetupContext } from "vue";
+import type { Ref, SetupContext } from "vue";
 import { defineComponent, inject, toRefs } from "vue";
 import type { FormItemProps } from "./form-item-type";
 import { formItemProps } from "./form-item-type";
@@ -24,17 +24,27 @@ export default defineComponent({
   props: formItemProps,
   slots: ["default"],
   setup(props: FormItemProps, ctx: SetupContext) {
-    const formModel = inject("FORM_MODEL") as Record<string, any>;
+    const formModel = inject("FORM_MODEL") as Ref<Record<string, any>>;
+    const formType = inject("FORM_TYPE") as Ref<"view" | "edit">;
     const { label, prop } = toRefs(props);
 
     return () => {
-      return <div class="h-form-item h-form-item__read" style={{ width: getColWidth(props) }}>
-        <div class="h-form-item__read-label">{label.value || ""}</div>
-        <div class="h-form-item__read-content">
+      const viewDefaultContent = () => formModel.value[prop.value] || "";
+      const editDefaultContent = (form: Ref<Record<string, any>>, prop: Ref<string>) => (
+        <el-input v-model={form.value[prop.value]} />
+      );
+      const contentRender = (form: Ref<Record<string, any>>, prop: Ref<string>) => {
+        if (formType.value === "view") return viewDefaultContent();
+        return editDefaultContent(form, prop);
+      };
+
+      return <div class={["h-form-item", `h-form-item__${formType.value}`]} style={{ width: getColWidth(props) }}>
+        <div class={[`h-form-item__${formType.value}-label`]}>{label.value || ""}</div>
+        <div class={[`h-form-item__${formType.value}-content`]}>
           {
             ctx.slots.default
               ? ctx.slots.default({ ...formModel.value })
-              : formModel.value[prop.value] || ""
+              : contentRender(formModel, prop)
           }
         </div>
       </div>;

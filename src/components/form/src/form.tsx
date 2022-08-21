@@ -9,11 +9,12 @@ export default defineComponent({
   props: formProps,
   slots: ["default"],
   setup(props: FormProps, ctx: SetupContext) {
-    const { model } = toRefs(props);
+    const { model, type } = toRefs(props);
     provide("FORM_MODEL", model);
+    provide("FORM_TYPE", type);
 
     return () => {
-      return <div class="h-form">
+      return <div class={["h-form", type.value === "edit" && "h-form-edit"]}>
         {ctx.slots.default ? ctx.slots.default() : ""}
       </div>;
     };

@@ -15,6 +15,7 @@
     "build:components": "node ./scripts/build.js"
   },
   "dependencies": {
+    "element-plus": "^2.2.14",
     "vue": "^3.2.37"
   },
   "devDependencies": {
