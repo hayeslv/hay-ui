@@ -8,7 +8,7 @@
 
 ```vue
 <template>
-  <HCard style="width: 450px;">
+  <HCard>
     <div v-for="item in 4" :key="item">{{ `列表内容 ${item}` }}</div>
   </HCard>
 </template>
@@ -50,8 +50,7 @@ export default defineComponent({
 
 ## 属性
 
-| 属性 | 说明 | 类型 | 可选值 | 默认值 |
-| ---- | ---- | ---- | ------ | ------ |
-|      |      |      |        |        |
-|      |      |      |        |        |
+| 属性   | 说明             | 类型   | 可选值                 | 默认值 |
+| ------ | ---------------- | ------ | ---------------------- | ------ |
+| shadow | 设置阴影显示时机 | string | always / hover / never | always |
 
