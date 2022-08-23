@@ -4,7 +4,7 @@ import type { FormItemProps } from "./form-item-type";
 import { formItemProps } from "./form-item-type";
 import "../style/form-item.scss";
 import type { FormItemRule } from "../../../tokens";
-import { ensureArray, isString } from "../../../utils";
+import { ensureArray } from "../../../utils";
 import type { RuleItem } from "async-validator";
 import AsyncValidator from "async-validator";
 

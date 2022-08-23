@@ -7,6 +7,7 @@ import TreePlugin, { HTree } from "../src/components/tree";
 import FormPlugin, { HForm } from "../src/components/form";
 import FormItemPlugin, { HFormItem } from "../src/components/form-item";
 import InputPlugin, { HInput } from "../src/components/input";
+import CardPlugin, { HCard } from "../src/components/card";
 
 // 2、导出这些组件
 export {
@@ -15,9 +16,10 @@ export {
   HForm,
   HFormItem,
   HInput,
+  HCard,
 };
 
-const installs = [ButtonPlugin, TreePlugin, FormPlugin, FormItemPlugin, InputPlugin];
+const installs = [ButtonPlugin, TreePlugin, FormPlugin, FormItemPlugin, InputPlugin, CardPlugin];
 
 // 3、导出一个vue插件
 export default {

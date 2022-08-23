@@ -11,6 +11,7 @@ export default function genCoreTemplate(name: string) {
   return `\
 import { defineComponent } from "vue";
 import { ${propsName}, ${propsTypeName} } from "./${propsFileName}";
+import "../style/${name}.scss";
 
 export default defineComponent({
   name: "${compName}",

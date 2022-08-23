@@ -16,6 +16,7 @@ specifiers:
   fs-extra: ^10.1.0
   happy-dom: ^6.0.4
   postcss: ^8.4.16
+  prism-theme-vars: ^0.2.4
   sass: ^1.54.3
   tailwindcss: ^3.1.8
   typescript: ^4.6.4
@@ -29,6 +30,7 @@ specifiers:
 dependencies:
   async-validator: 4.2.5
   element-plus: 2.2.14_vue@3.2.37
+  prism-theme-vars: 0.2.4
   vue: 3.2.37
 
 devDependencies:
@@ -3529,6 +3531,10 @@ packages:
       ansi-styles: 5.2.0
       react-is: 17.0.2
     dev: true
+
+  /prism-theme-vars/0.2.4:
+    resolution: {integrity: sha512-B3Pht+GCT87sZph7hMRLlCQXzCM0awW7Rhk08RavpqRW4LEQOeqN0uMG4QCWkul2tr8PB61YAOJGUrEW+1uuJA==}
+    dev: false
 
   /prismjs/1.28.0:
     resolution: {integrity: sha512-8aaXdYvl1F7iC7Xm1spqSaY/OJBpYW3v+KJ+F17iYxvdc8sfjW194COK5wVhMZX45tGteiBQgdvD/nhxcRwylw==}

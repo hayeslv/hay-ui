@@ -17,6 +17,7 @@
   "dependencies": {
     "async-validator": "^4.2.5",
     "element-plus": "^2.2.14",
+    "prism-theme-vars": "^0.2.4",
     "vue": "^3.2.37"
   },
   "devDependencies": {
