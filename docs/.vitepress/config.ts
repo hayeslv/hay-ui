@@ -30,6 +30,12 @@ const sidebar = {
     //     // { text: "Space 间距", link: "/components/space/" },
     //   ],
     // },
+    {
+      text: "业务组件",
+      items: [
+        { text: "PicCard", link: "/components/card/pic-card.md" },
+      ],
+    },
   ],
 };
 

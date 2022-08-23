@@ -89,7 +89,8 @@ h5:hover .header-anchor,
 h5:focus .header-anchor,
 h6:hover .header-anchor,
 h6:focus .header-anchor {
-  opacity: 1;
+  // opacity: 1;
+  display: none;
 }
 
 h1 {

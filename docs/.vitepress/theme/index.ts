@@ -3,10 +3,10 @@ import Theme from "vitepress/theme";
 import "./demo-block.scss";
 import DemoBlock from "vitepress-theme-demoblock/components/DemoBlock.vue";
 import Demo from "vitepress-theme-demoblock/components/Demo.vue";
-// import ElementPlus from "element-plus";
+import ElementPlus from "element-plus";
 import type { App } from "vue";
 
-// import "element-plus/dist/index.css";
+import "element-plus/dist/index.css";
 // import "../../../src/index.scss";
 import "../../styles/app.scss";
 
@@ -15,13 +15,14 @@ import { HForm } from "../../../src/components/form";
 import { HFormItem } from "../../../src/components/form-item";
 import { HInput } from "../../../src/components/input";
 import { HCard } from "../../../src/components/card";
+import { HPicCard } from "../../../src/components/pic-card";
 
 export default {
   ...Theme,
   // 扩展应用程序实例
   enhanceApp({ app }: { app: App }) {
     // 注册组件
-    // app.use(ElementPlus);
+    app.use(ElementPlus);
     app.component("DemoBlock", DemoBlock);
     app.component("Demo", Demo);
 
@@ -30,5 +31,6 @@ export default {
     app.component("HFormItem", HFormItem);
     app.component("HInput", HInput);
     app.component("HCard", HCard);
+    app.component("HPicCard", HPicCard);
   },
 };

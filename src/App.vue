@@ -59,8 +59,9 @@ const data = ref([
 </script>
 
 <template>
-  <HButton type="primary" size="large" @click="confirm">哈哈</HButton>
-  <HTree :data="data" />
+  <!-- <HButton type="primary" size="large" @click="confirm">哈哈</HButton> -->
+  <!-- <HTree :data="data" /> -->
+  <HPicCard />
 </template>
 
 <style scoped>

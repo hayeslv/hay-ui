@@ -8,6 +8,7 @@ import FormPlugin, { HForm } from "../src/components/form";
 import FormItemPlugin, { HFormItem } from "../src/components/form-item";
 import InputPlugin, { HInput } from "../src/components/input";
 import CardPlugin, { HCard } from "../src/components/card";
+import PicCardPlugin, { HPicCard } from "../src/components/pic-card";
 
 // 2、导出这些组件
 export {
@@ -17,9 +18,10 @@ export {
   HFormItem,
   HInput,
   HCard,
+  HPicCard,
 };
 
-const installs = [ButtonPlugin, TreePlugin, FormPlugin, FormItemPlugin, InputPlugin, CardPlugin];
+const installs = [ButtonPlugin, TreePlugin, FormPlugin, FormItemPlugin, InputPlugin, CardPlugin, PicCardPlugin];
 
 // 3、导出一个vue插件
 export default {
