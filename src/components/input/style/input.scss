@@ -1,6 +1,6 @@
 .h-input {
   /* your component style */
-  border: 1px solid #dcdfe6;
+  // border: 1px solid #dcdfe6;
   border-radius: 4px;
   height: 32px;
   width: 100%;
@@ -12,6 +12,15 @@
     align-items: center;
     justify-content: center;
     padding: 1px 11px;
+    box-shadow: 0 0 0 1px #dcdfe6 inset;
+    border-radius: 4px;
+    transition: box-shadow 0.2s;
+    &:hover {
+      box-shadow: 0 0 0 1px #c0c4cc inset;
+    }
+    &.is-focus {
+      box-shadow: 0 0 0 1px #409eff inset;
+    }
     .h-input__inner{
       width: 100%;
       flex-grow: 1;

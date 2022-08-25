@@ -9,6 +9,6 @@ import "./index.scss";
 // 使用全量导出
 import HayUI from "../build/hay-ui.esm.js";
 
-createApp(App)
+createApp(App, { class: ["app", "app2"] })
   .use(HayUI)
   .mount("#app");

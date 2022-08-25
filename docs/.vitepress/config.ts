@@ -13,7 +13,7 @@ const sidebar = {
     {
       text: "数据录入",
       items: [
-        // { text: "Input 输入框", link: "/components/input/" }
+        { text: "Input 输入框", link: "/components/input/" },
         { text: "Form", link: "/components/form/" },
       ],
     },

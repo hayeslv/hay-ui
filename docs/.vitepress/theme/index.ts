@@ -10,12 +10,13 @@ import "element-plus/dist/index.css";
 // import "../../../src/index.scss";
 import "../../styles/app.scss";
 
-import { HTree } from "../../../src/components/tree";
-import { HForm } from "../../../src/components/form";
-import { HFormItem } from "../../../src/components/form-item";
-import { HInput } from "../../../src/components/input";
-import { HCard } from "../../../src/components/card";
-import { HPicCard } from "../../../src/components/pic-card";
+// import { HTree } from "../../../src/components/tree";
+// import { HForm } from "../../../src/components/form";
+// import { HFormItem } from "../../../src/components/form-item";
+// import { HInput } from "../../../src/components/input";
+// import { HCard } from "../../../src/components/card";
+// import { HPicCard } from "../../../src/components/pic-card";
+import HayUI from "../../../scripts/entry";
 
 export default {
   ...Theme,
@@ -26,11 +27,12 @@ export default {
     app.component("DemoBlock", DemoBlock);
     app.component("Demo", Demo);
 
-    app.component("HTree", HTree);
-    app.component("HForm", HForm);
-    app.component("HFormItem", HFormItem);
-    app.component("HInput", HInput);
-    app.component("HCard", HCard);
-    app.component("HPicCard", HPicCard);
+    // app.component("HTree", HTree);
+    // app.component("HForm", HForm);
+    // app.component("HFormItem", HFormItem);
+    // app.component("HInput", HInput);
+    // app.component("HCard", HCard);
+    // app.component("HPicCard", HPicCard);
+    app.use(HayUI);
   },
 };
