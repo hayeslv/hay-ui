@@ -48,10 +48,12 @@
       "@hayeslv"
     ],
     "ignorePatterns": [
-      "build/*"
+      "build/*",
+      "cli/build"
     ],
     "rules": {
-      "node/no-callback-literal": "off"
+      "node/no-callback-literal": "off",
+      "no-prototype-builtins": "off"
     }
   },
   "lint-staged": {
