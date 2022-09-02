@@ -53,7 +53,8 @@
     ],
     "rules": {
       "node/no-callback-literal": "off",
-      "no-prototype-builtins": "off"
+      "no-prototype-builtins": "off",
+      "no-new-func": "off"
     }
   },
   "lint-staged": {
