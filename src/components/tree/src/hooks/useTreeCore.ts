@@ -1,5 +1,5 @@
 import type { Ref } from "vue";
-import { computed } from "vue";
+import { unref, computed } from "vue";
 import type { IInnerTreeNode } from "../tree.type";
 import type { IUseTreeCore } from "./useTree.type";
 
@@ -28,7 +28,8 @@ export function useCore(innerData: Ref<IInnerTreeNode[]>): IUseTreeCore {
    * @param {boolean} recursive 是否递归
    * @returns
    */
-  const getChildren = (node: IInnerTreeNode, recursive: boolean = true): IInnerTreeNode[] => {
+  const getChildren = (treeNode: IInnerTreeNode | Ref<IInnerTreeNode>, recursive: boolean = true): IInnerTreeNode[] => {
+    const node = unref(treeNode);
     const result = [];
     // 找到node在列表中的索引
     const startIndex = innerData.value.findIndex(item => item.id === node.id);
@@ -44,6 +45,30 @@ export function useCore(innerData: Ref<IInnerTreeNode[]>): IUseTreeCore {
     return result;
   };
 
+  /**
+   * 获取当前节点下的所有“已展开”的子节点
+   *
+   * @param {(IInnerTreeNode | Ref<IInnerTreeNode>)} treeNode
+   * @param {IInnerTreeNode[]} [result=[]]
+   * @returns {IInnerTreeNode[]}
+   */
+  const getExpandedChildren = (
+    treeNode: IInnerTreeNode | Ref<IInnerTreeNode>,
+    result: IInnerTreeNode[] = [],
+  ): IInnerTreeNode[] => {
+    const node = unref(treeNode);
+    // 获取当前子节点下的直接子节点
+    const childrenNodes = getChildren(node, false);
+    result.push(...childrenNodes);
+    childrenNodes.forEach(n => {
+      if (n.expanded) {
+        getExpandedChildren(n, result);
+      }
+    });
+
+    return result;
+  };
+
   const getParent = (node: IInnerTreeNode): IInnerTreeNode | undefined => {
     const parentNode = innerData.value.find(item => item.id === node.parentId);
     return parentNode as IInnerTreeNode | undefined;
@@ -52,6 +77,7 @@ export function useCore(innerData: Ref<IInnerTreeNode[]>): IUseTreeCore {
   return {
     expandedTree,
     getChildren,
+    getExpandedChildren,
     getParent,
   };
 }

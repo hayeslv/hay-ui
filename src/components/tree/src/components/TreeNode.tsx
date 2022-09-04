@@ -2,7 +2,7 @@ import { defineComponent, inject, toRefs } from "vue";
 import type { TreeNodeProps } from "./TreeNode.type";
 import { treeNodeProps } from "./TreeNode.type";
 
-const NODE_HEIGHT = 28; // 节点高度
+const NODE_HEIGHT = 32; // 节点高度
 const NODE_INDENT = 24; // 节点缩进大小
 
 export default defineComponent({
@@ -10,24 +10,24 @@ export default defineComponent({
   props: treeNodeProps,
   setup(props: TreeNodeProps, { slots }) {
     const { treeNode, checkable } = toRefs(props);
-    const { getChildren, toggleCheckNode } = inject("TREE_CONTEXT") as any; // TODO 添加类型
+    const { getChildren, getExpandedChildren, toggleCheckNode } = inject("TREE_CONTEXT") as any; // TODO 添加类型
 
     return () => <div
-      class="h-tree-node relative leading-[24px] hover:bg-slate-100"
+      class="h-tree-node relative leading-[32px] hover:bg-slate-100"
       style={{
         paddingLeft: `${NODE_INDENT * (treeNode.value.level - 1)}px`,
       }}>
       {/* 连接线显示：1.不是叶子节点，2.展开状态 */}
       {
         !treeNode.value.isLeaf && treeNode.value.expanded &&
-      <span
-        class="h-tree-node__vline absolute w-px bg-gray-300"
-        style={{
-          height: `${NODE_HEIGHT * getChildren(treeNode).length}px`,
-          left: `${NODE_INDENT * (treeNode.value.level - 1) + 9}px`,
-          top: `${NODE_HEIGHT}px`,
-        }}
-      ></span>
+        <span
+          class="h-tree-node__vline absolute w-px bg-gray-300"
+          style={{
+            height: `${NODE_HEIGHT * getExpandedChildren(treeNode).length}px`,
+            left: `${NODE_INDENT * (treeNode.value.level - 1) + 12}px`,
+            top: `${NODE_HEIGHT}px`,
+          }}
+        ></span>
       }
       {/* 折叠图标 */}
       {/* 判断当前节点是否为叶子节点 */}

@@ -7,7 +7,7 @@ import ElementPlus from "element-plus";
 import type { App } from "vue";
 
 import "element-plus/dist/index.css";
-// import "../../../src/index.scss";
+import "../../../src/index.scss";
 import "../../styles/app.scss";
 
 // import { HTree } from "../../../src/components/tree";
