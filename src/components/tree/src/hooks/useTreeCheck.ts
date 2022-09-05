@@ -1,11 +1,12 @@
 import type { Ref } from "vue";
 import { unref } from "vue";
 import type { IInnerTreeNode } from "../tree.type";
-import type { IUseTreeCore } from "./useTree.type";
+import type { IUseTreeCheck, IUseTreeCore } from "./useTree.type";
 
 export function useTreeCheck(
+  innerData: Ref<IInnerTreeNode[]>,
   { getChildren, getParent }: IUseTreeCore,
-) {
+): IUseTreeCheck {
   const toggleCheckNode = (treeNode: IInnerTreeNode | Ref<IInnerTreeNode>) => {
     const node = unref(treeNode);
     // 避免初始化的时候，node中没有checked设置

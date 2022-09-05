@@ -1,6 +1,7 @@
 export * from "./array";
 export * from "./type";
 export * from "./clone";
+export * from "./other";
 
 export function isArray(o: any) {
   return Array.isArray(o);

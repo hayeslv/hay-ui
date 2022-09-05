@@ -387,3 +387,35 @@ const data = ref([
 </script>
 ```
 :::
+
+## 操作节点
+
+通过设置 operable 打开节点操作按钮。
+
+:::demo 操作节点开关 `operable` ，默认为 `false`
+```vue
+<template>
+  <HTree :data="data" operable></HTree>
+</template>
+<script setup>
+import { ref } from 'vue'
+
+const data = ref([
+  {
+    label: 'node 1',
+    id: 'node-1',
+    children: [
+      {
+        label: 'node 1-1',
+        id: 'node-1-1'
+      },
+    ]
+  },
+  {
+    label: 'node 2',
+    id: 'node-2'
+  },
+])
+</script>
+```
+:::
