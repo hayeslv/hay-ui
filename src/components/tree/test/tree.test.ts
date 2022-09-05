@@ -1,5 +1,5 @@
-import { render } from "@testing-library/vue";
-import Tree from "../src/tree";
+// import { render } from "@testing-library/vue";
+// import Tree from "../src/tree";
 
 describe("tree test", () => {
   test("tree init render", async() => {
