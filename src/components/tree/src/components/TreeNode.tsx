@@ -9,8 +9,8 @@ export default defineComponent({
   name: "HTreeNode",
   props: treeNodeProps,
   setup(props: TreeNodeProps, { slots }) {
-    const { treeNode, checkable } = toRefs(props);
-    const { getChildren, getExpandedChildren, toggleCheckNode } = inject("TREE_CONTEXT") as any; // TODO 添加类型
+    const { lineable, treeNode, checkable } = toRefs(props);
+    const { getExpandedChildren, toggleCheckNode } = inject("TREE_CONTEXT") as any; // TODO 添加类型
 
     return () => <div
       class="h-tree-node relative leading-[32px] hover:bg-slate-100"
@@ -18,8 +18,7 @@ export default defineComponent({
         paddingLeft: `${NODE_INDENT * (treeNode.value.level - 1)}px`,
       }}>
       {/* 连接线显示：1.不是叶子节点，2.展开状态 */}
-      {
-        !treeNode.value.isLeaf && treeNode.value.expanded &&
+      {!treeNode.value.isLeaf && treeNode.value.expanded && lineable.value && (
         <span
           class="h-tree-node__vline absolute w-px bg-gray-300"
           style={{
@@ -28,7 +27,7 @@ export default defineComponent({
             top: `${NODE_HEIGHT}px`,
           }}
         ></span>
-      }
+      )}
       {/* 折叠图标 */}
       {/* 判断当前节点是否为叶子节点 */}
       {

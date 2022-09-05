@@ -26,6 +26,12 @@ export const treeProps = {
     type: Object as PropType<ITreeNode[]>,
     required: true,
   },
+  // 是否显示参考线
+  lineable: {
+    type: Boolean,
+    default: false,
+  },
+  // 是否显示复选框
   checkable: {
     type: Boolean,
     default: false,
