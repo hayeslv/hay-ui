@@ -1,10 +1,4 @@
 .h-tree {
-  /* your component style */
-  &-node{
-    display: flex;
-    align-items: center;
-    text-align: left;
-  }
   &-checkbox__inner{
     // position: absolute;
     // left: 0;
@@ -23,6 +17,23 @@
     height: 14px;
     &::after {
       background-color: red;
+    }
+  }
+  .h-tree__node {
+    &--content {
+      display: flex;
+      align-items: center;
+      text-align: left;
+      border: 1px solid transparent;
+    }
+    &--drop-inner {
+      border: 1px solid silver;
+    }
+    &--drop-next {
+      border-bottom: 1px solid silver;
+    }
+    &--drop-prev {
+      border-top: 1px solid silver;
     }
   }
 }

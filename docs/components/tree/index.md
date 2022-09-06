@@ -422,6 +422,43 @@ const data = ref([
 ```
 :::
 
+## 可拖拽节点
+
+通过 draggable 属性可让节点变为可拖拽。
+
+:::demo 
+
+```vue
+<template>
+	<h4 style="margin-bottom: 12px;">默认行为</h4>
+	<HTree :data="data" draggable></HTree>
+	<h4 style="margin: 12px 0;">功能设置（只能拖拽进内部）</h4>
+	<HTree :data="data" :draggable="{dropInner: true}"></HTree>
+</template>
+<script setup>
+import { ref } from 'vue'
+
+const data = ref([
+  {
+    label: 'node 1',
+    id: 'node-1',
+    children: [
+      {
+        label: 'node 1-1',
+        id: 'node-1-1'
+      },
+    ]
+  },
+  {
+    label: 'node 2',
+    id: 'node-2'
+  },
+])
+</script>
+```
+
+:::
+
 
 
 ## 属性

@@ -1,4 +1,5 @@
 import type { ExtractPropTypes, PropType } from "vue";
+import type { IDragDrop } from "./hooks/useTree.type";
 
 export interface ITreeNode {
   label: string;
@@ -39,6 +40,11 @@ export const treeProps = {
   // 是否显示操作按钮
   operable: {
     type: Boolean,
+    default: false,
+  },
+  // 拖拽属性开关
+  draggable: {
+    type: [Boolean, Object] as PropType<IDragDrop>,
     default: false,
   },
 } as const;

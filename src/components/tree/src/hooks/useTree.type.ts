@@ -22,9 +22,30 @@ export interface IUseTreeOperate {
   remove: (node: IInnerTreeNode) => void;
 }
 
+// 拖拽
+export type IDragDrop = boolean | IDropType;
+export interface IDropType {
+  dropPrev?: boolean;
+  dropNext?: boolean;
+  dropInner?: boolean;
+}
+export interface IUseTreeDraggable {
+  onDragstart: (event: DragEvent, treeNode: IInnerTreeNode) => void;
+  onDragover: (event: DragEvent) => void;
+  onDragleave: (event: DragEvent) => void;
+  onDragend: (event: DragEvent) => void;
+  onDrop: (event: DragEvent, treeNode: IInnerTreeNode) => void;
+}
+export interface DragState {
+  dropType?: keyof Required<IDropType>;
+  draggingNode?: HTMLElement | null;
+  draggingTreeNode?: IInnerTreeNode | null;
+}
+
 export type TreeUtils = {
   treeData: Ref<IInnerTreeNode[]>;
 } & IUseTreeCore
 & IUseTreeToggle
 & IUseTreeCheck
-& IUseTreeOperate;
+& IUseTreeOperate
+& IUseTreeDraggable;

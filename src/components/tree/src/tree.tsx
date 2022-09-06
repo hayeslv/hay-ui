@@ -13,7 +13,7 @@ export default defineComponent({
   setup(props: TreeProps, ctx: SetupContext) {
     const { data } = toRefs(props);
     const { slots } = ctx;
-    const treeContext = useTree(data.value);
+    const treeContext = useTree(data.value, props, ctx);
     provide("TREE_CONTEXT", treeContext);
 
     return () => {

@@ -1,21 +1,25 @@
-import type { Ref } from "vue";
+import type { Ref, SetupContext } from "vue";
 import { ref, unref } from "vue";
-import type { ITreeNode } from "../tree.type";
+import type { ITreeNode, TreeProps } from "../tree.type";
 import { generateInnerTree } from "../utils";
 import type { TreeUtils } from "./useTree.type";
 import { useTreeCheck } from "./useTreeCheck";
 import { useCore } from "./useTreeCore";
+import { useTreeDragDrop } from "./useTreeDragDrop";
 import { useTreeOperate } from "./useTreeOperate";
 import { useTreeToggle } from "./useTreeToggle";
 
 export default function useTree(
-  node: Ref<ITreeNode[]> | ITreeNode[],
-  // ctx: SetupContext,
+  tree: ITreeNode[] | Ref<ITreeNode[]>,
+  treeProps: TreeProps,
+  ctx: SetupContext,
 ): TreeUtils {
-  const innerData = ref(generateInnerTree(unref(node)));
+  const data = unref(tree);
+  const innerData = ref(generateInnerTree(data));
 
   const core = useCore(innerData);
   const plugins = [useTreeToggle, useTreeCheck, useTreeOperate];
+  const dragdropPlugin = useTreeDragDrop(treeProps.draggable, innerData, core);
 
   // 聚合插件
   const pluginMethods = plugins.reduce((acc, plugin) => {
@@ -25,6 +29,7 @@ export default function useTree(
   return {
     ...core,
     ...pluginMethods,
+    ...dragdropPlugin,
     treeData: innerData,
   } as TreeUtils;
 }
