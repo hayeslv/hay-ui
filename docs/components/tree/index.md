@@ -463,12 +463,13 @@ const data = ref([
 
 ## 属性
 
-| 属性      | 说明     | 类型    | 可选值 | 默认值 |
-| --------- | -------- | ------- | ------ | ------ |
-| data      | 展示数据 | array   | —      | —      |
-| lineable  | 连接线   | boolean | —      | false  |
-| checkable | 复选框   | boolean | —      | false  |
-| operable  | 操作节点 | boolean | —      | false  |
+| 属性      | 说明                 | 类型             | 可选值                          | 默认值 |
+| --------- | -------------------- | ---------------- | ------------------------------- | ------ |
+| data      | 展示数据             | array            | —                               | —      |
+| lineable  | 连接线               | boolean          | —                               | false  |
+| checkable | 节点是否可被选择     | boolean          | —                               | false  |
+| operable  | 是否开启操作节点功能 | boolean          | —                               | false  |
+| draggable | 是否开启拖拽节点功能 | boolean / object | dropPrev / dropNext / dropInner | false  |
 
 
 
