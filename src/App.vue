@@ -56,15 +56,30 @@ const data = ref([
     id: "pnpm-workspace.yaml",
   },
 ]);
+
+const drawer = ref(false);
+const move = ref(false);
 </script>
 
 <template>
   <!-- <HButton type="primary" size="large" @click="confirm">哈哈</HButton> -->
   <!-- <HTree :data="data" /> -->
-  <HPicCard />
+  <button @click="drawer = true">open</button>
+  <HDrawer v-model="drawer" />
+
+  <div class="test" :class="{ move: move }" @click="move = !move" />
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+.test {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  transition-duration: 1s;
+  &.move {
+    transform: translateX(500%);
+  }
+}
 .logo {
   height: 6em;
   padding: 1.5em;

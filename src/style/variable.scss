@@ -28,3 +28,7 @@ $h-line: var(--h-line, #adb0b8); // 边框分割线，仅用于边框
 $h-form-control-line-active: var(--h-form-control-line-active, #5e7ce0); // 表单控件边框激活色，用于获得焦点
 $h-brand-active: var(--h-brand-active, #526ecc); // 品牌色激活色（加深）
 $h-brand-active-focus: var(--h-brand-active-focus, #344899); // 品牌色焦点色（重度加深）
+
+* {
+  box-sizing: border-box;
+}

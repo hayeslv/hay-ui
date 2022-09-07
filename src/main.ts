@@ -8,7 +8,8 @@ import "./index.scss";
 
 // 使用全量导出
 import HayUI from "../build/hay-ui.esm.js";
+import "../build/style.css";
 
-createApp(App, { class: ["app", "app2"] })
+createApp(App)
   .use(HayUI)
   .mount("#app");
