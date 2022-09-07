@@ -31,6 +31,12 @@ const sidebar = {
     //   ],
     // },
     {
+      text: "反馈组件",
+      items: [
+        { text: "Drawer 抽屉", link: "/components/drawer/" },
+      ],
+    },
+    {
       text: "业务组件",
       items: [
         { text: "PicCard", link: "/components/card/pic-card.md" },
