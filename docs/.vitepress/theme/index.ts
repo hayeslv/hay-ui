@@ -1,5 +1,6 @@
 import Theme from "vitepress/theme";
 
+import "./styles/vars.css";
 import "./demo-block.scss";
 import DemoBlock from "vitepress-theme-demoblock/components/DemoBlock.vue";
 import Demo from "vitepress-theme-demoblock/components/Demo.vue";
@@ -7,7 +8,7 @@ import ElementPlus from "element-plus";
 import type { App } from "vue";
 
 import "element-plus/dist/index.css";
-import "../../../src/index.scss";
+// import "../../../src/index.scss";
 import "../../styles/app.scss";
 
 // import { HTree } from "../../../src/components/tree";
